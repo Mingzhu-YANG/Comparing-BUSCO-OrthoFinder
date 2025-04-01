@@ -147,7 +147,7 @@ move_list="outparalog_family.txt"
 log_file="move_files.log"
 target_folder="${folder}outparalogs_file/"
 
-# Clear log file（IF alreadyb exist）
+# Clear log file（IF already exist）
 > "$log_file"
 
 # Create target folder
@@ -400,11 +400,12 @@ echo "All empty files have been moved to $target_folder."
 
    
 5. To now, for 13594 OGs, 3972 are out-paralog OGs, after removing in-paralog sequences, we lost 3993 OGs, so 5629 OGs are clean to use after filtering, they are in a folder called OF_4_N.
-   For now, we get the most relaxed level of single-copy Orthologues Groups.
-   Before we filtering, we also have OF_4_12 using BUSCO definition of single copy orthologs, the number of OF_4_12 is 1659 OGs,
-   We also have OrthoFinder definition of 365 Single_Copy_Orthologue_Sequences.
+   
+   + For now, we get the most relaxed level of single-copy Orthologues Groups.
+   + Before we filtering, we also have OF_4_12 using BUSCO definition of single copy orthologs, the number of OF_4_12 is 1659 OGs,
+   + We also have OrthoFinder definition of 365 Single_Copy_Orthologue_Sequences.
 
-   Using these diferent level of restrictions we make conparison with BUSCO output, here the BUSCO output was reformatted according to gene families.
+   **Using these diferent level of restrictions we make conparison with BUSCO output, here the BUSCO output was reformatted according to gene families.**
    
 
 main comparison script compare.py
