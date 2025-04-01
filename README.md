@@ -22,9 +22,8 @@ this is the screen shot from slides of original BUSCO and OrthoFinder output
 
 ### S2.1-Copy the Orthogroup_Sequences directory to the working directory.
 
-1. Using the bash script to group all OGs into different categories:
-
-  for the Orthogroup_Sequences dir, we have 71249 OGs, we then group them into 2:
+1. Using the bash script to group all OGs into different categories, for the Orthogroup_Sequences dir, we have 71249 OGs, we then group them into 2:
+   
 - folder OF_1_3: 57459 OGs
   these are OGs with less than 3 sequences, cannot be used to build trees, so we have to take them out to another folder.
 - folder OF_ALL: 13790 OGs
@@ -283,8 +282,9 @@ if sequences_not_found:
 print(f"Total number of extracted sequences: {len(sequences_found)}")
 
 ```
-Then we got an ouyt put of inparalogs_4_n.fasta, next step nwe need to map them with BUSCO sequences and keep them single copy,
-here we use find_inparalogs_busco.py
+
+  Then we got an output of inparalogs_4_n.fasta, next step nwe need to map them with BUSCO sequences and keep them single copy, here we use find_inparalogs_busco.py
+  
 ```
 from Bio import SeqIO
 import os
@@ -379,7 +379,7 @@ for fa_file in os.listdir(target_dir):
 print(f"Number of deleted sequences is: {deleted_sequences_count}")
 
 ```
-   Then, a lot of OrthoGroups become null file as they have no sequences remained, we move them to null_file folder using a script move_nullfile.sh
+   - 4. Then, a lot of OrthoGroups become null file as they have no sequences remained, we move them to null_file folder using a script move_nullfile.sh
    
 ```
 #!/bin/bash
@@ -405,10 +405,10 @@ echo "All empty files have been moved to $target_folder."
    + Before we filtering, we also have OF_4_12 using BUSCO definition of single copy orthologs, the number of OF_4_12 is 1659 OGs,
    + We also have OrthoFinder definition of 365 Single_Copy_Orthologue_Sequences.
 
-   **Using these diferent level of restrictions we make conparison with BUSCO output, here the BUSCO output was reformatted according to gene families.**
+  **Using these diferent level of restrictions we make conparison with BUSCO output, here the BUSCO output was reformatted according to gene families.**
    
 
-main comparison script compare.py
+  main comparison script compare.py
 ```
 import os
 
@@ -471,22 +471,5 @@ with open(output_file_path, 'w') as output_file:
 print("Comparison results have been written to", output_file_path)
 
 ```
-
-
-6. 6_statistics
-   
-```
-[qw23953@bp1-login03(BluePebble) 6_statistics]$ ls -tl
-total 833
--rw-r--r-- 1 qw23953 bisc  10365 Oct 11 16:02 busco_more.txt
--rw-r--r-- 1 qw23953 bisc   9764 Oct  8 10:07 orthofinder_counts.txt
--rw-r--r-- 1 qw23953 bisc    682 Oct  8 10:06 count.sh
--rw-r--r-- 1 qw23953 bisc   9776 Oct  8 10:06 busco_counts.txt
--rw-r--r-- 1 qw23953 bisc   7670 Oct  8 10:05 orthofinder.txt
--rw-r--r-- 1 qw23953 bisc   7654 Oct  8 10:05 busco.txt
--rw-r--r-- 1 qw23953 bisc 657369 Oct  7 17:06 OF_all_results.txt
-
-```
-
 
 
