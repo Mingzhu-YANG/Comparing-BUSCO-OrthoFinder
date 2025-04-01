@@ -1,6 +1,8 @@
 # Comparing common strategies for ortholog selection used in phylogenomics
 
-These codes are for constructing core BUSCOs on metazoan phylogeny
+These codes are for constructing core BUSCOs on metazoan phylogeny.
+
+Basically, all the scripts would work on the output of the OrthoFinder directories, by doing MAFFT-Linsi sequences alignment and IQ-TREE2 tree building, we use a customized script to identify the out-paralog OGs and in-paralog sequences, and filtering both for further analysis.
 
 
 ## S1-Data collection
@@ -20,13 +22,162 @@ this is the screen shot from slides of original BUSCO and OrthoFinder output
 
 ## S2-Make comparisons
 
-### Copy the Orthogroup_Sequences directory to the working directory.
+### S2.1-Copy the Orthogroup_Sequences directory to the working directory.
 
-1. Using the bash script to group all OGs into 4 categories:
-- folder_1_3
-- folder_4_12_single
-- folder_4_12_multi
-- folder_more_than_12
+1. Using the bash script to group all OGs into different categories:
+
++ for the Orthogroup_Sequences dir, we have 71249 OGs, we then group them into 2:
+- folder OF_1_3: 57459 OGs
+  these are OGs with less than 3 sequences, cannot be used to build trees, so we have to take them out to another folder.
+- folder OF_ALL: 13790 OGs
+  
+
+2. MAFFT alignment
+   using the script below
+3. IQtree tree building
+   using the script below
+  
+### S2.2topology analysis (identify paralogs, i.e. in-paralogs and out-paralogs)
+1. identify_paralogs_2.py
+```
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jun  4 10:54:20 2024
+
+@author: jesuslozanofernandez
+Modified on July by Mingzhu Yang
+"""
+
+
+from ete3 import Tree
+from collections import defaultdict
+import sys
+import os
+
+if len(sys.argv) < 2:
+    print("Usage: python identify_paralogs.py <treefile>")
+    sys.exit(1)
+
+my_tree = sys.argv[1]
+print(f"Input file: {my_tree}")
+
+# 获取文件名和路径/Get file name and path
+base_name = os.path.basename(my_tree)
+file_name, file_ext = os.path.splitext(base_name)
+
+# 加载树/ load trees
+tree = Tree(my_tree, format=1)
+print("Tree successfully loaded")
+
+my_dict = defaultdict(list)
+
+# 构建叶子节点字典/ Build dictionaries of leafs
+for leaf in tree.get_leaf_names():
+    my_dict[leaf.split('_')[0]].append(leaf)
+
+inparalogs = []
+outparalogs = []
+
+# 识别paralogs/ identify paralogs
+for k, v in my_dict.items():
+    if len(v) > 1:
+        paralogs = tuple(v)
+        is_monophyletic = tree.check_monophyly(paralogs, "name", unrooted=True)
+        if is_monophyletic[0]:
+            inparalogs.append(str(paralogs) + ': In-Paralogs')
+        else:
+            outparalogs.append(str(paralogs) + ': Out-Paralogs')
+
+
+inparalogs_file = f"{file_name}_inparalogs.txt"
+outparalogs_file = f"{file_name}_outparalogs.txt"
+
+with open(inparalogs_file, "w") as f:
+    for line in inparalogs:
+        f.write(line + "\n")
+
+with open(outparalogs_file, "w") as f:
+    for line in outparalogs:
+        f.write(line + "\n")
+
+print(f"In-Paralogs written to {inparalogs_file}")
+print(f"Out-Paralogs written to {outparalogs_file}")
+```
+   
+```
+Input file: /user/work/qw23953/6_Compare_Software/8_Redo/OG0000000.fa.mafft.treefile
+Tree successfully loaded
+In-Paralogs written to OG0000000.fa.mafft_inparalogs.txt
+Out-Paralogs written to OG0000000.fa.mafft_outparalogs.txt
+Input file: /user/work/qw23953/6_Compare_Software/8_Redo/OG0000001.fa.mafft.treefile
+Tree successfully loaded
+In-Paralogs written to OG0000001.fa.mafft_inparalogs.txt
+Out-Paralogs written to OG0000001.fa.mafft_outparalogs.txt
+Input file: /user/work/qw23953/6_Compare_Software/8_Redo/OG0000002.fa.mafft.treefile
+Tree successfully loaded
+In-Paralogs written to OG0000002.fa.mafft_inparalogs.txt
+Out-Paralogs written to OG0000002.fa.mafft_outparalogs.txt
+
+```
+2. Prepare the file of outparalog_family.txt
+   It should looks like
+```
+OG0000000.fa
+OG0000002.fa
+OG0000003.fa
+OG0000004.fa
+OG0000005.fa
+OG0000006.fa
+OG0000007.fa
+OG0000008.fa
+OG0000011.fa
+...
+```
+3. Copy all the file into a new folder called 3_all_OG_no_outparalogs/
+   Move out-paralog files to target_folder="${folder}outparalogs_file/"
+   using the script of move_outparalog_file.sh
+```
+#!/bin/bash
+
+# 定义文件路径
+folder="3_all_OG_no_outparalogs/"
+move_list="outparalog_family.txt"
+log_file="move_files.log"
+target_folder="${folder}outparalogs_file/"
+
+# 清空日志文件（如果已存在）
+> "$log_file"
+
+# 创建目标文件夹（如果不存在）
+mkdir -p "$target_folder"
+
+# 读取要移动的文件名列表
+while IFS= read -r filename
+do
+    # 构造完整的文件路径
+    filepath="${folder}${filename}"
+    
+    # 检查文件是否存在，如果存在则移动并记录日志
+    if [ -f "$filepath" ]; then
+        echo "Moving $filepath to $target_folder" | tee -a "$log_file"
+        mv "$filepath" "$target_folder"
+    else
+        echo "File $filepath does not exist" | tee -a "$log_file"
+    fi
+done < "$move_list"
+
+echo "File moving process complete. Check $log_file for details."
+```
+
+
+4. Further filtering the in-paralog sequences
+
+
+
+   
+6.   
+
 
 the script used would be 1_more_12.sh, 2_find_dup.sh
 
@@ -155,72 +306,6 @@ print("Comparison results have been written to", output_file_path)
 
 
 2. 
-
-
-
-
-
-
-  ### 1_GET_SEQUENCES.py
-
- ```python
-
-
-def group_by_gene_family(input_dir, output_dir):
-    """
-    Group sequences by gene family and save into separate .faa files.
-    """
-    os.makedirs(output_dir, exist_ok=True)
-    gene_family_dict = defaultdict(list)
-
-    for file_name in os.listdir(input_dir):
-        if file_name.endswith(".faa"):
-            file_path = os.path.join(input_dir, file_name)
-
-            for record in SeqIO.parse(file_path, "fasta"):
-                match = re.search(r'(\d+)at33208', record.id)
-                if match:
-                    family_id = match.group(1)
-                    gene_family_dict[family_id].append(record)
-                else:
-                    print(f"Skipping sequence with unexpected format: {record.id}")
-
-    for family_id, sequences in gene_family_dict.items():
-        output_file = os.path.join(output_dir, f"{family_id}at33208.faa")
-        with open(output_file, "w") as f:
-            SeqIO.write(sequences, f, "fasta")
-
-    print("FASTA files have been grouped by gene family and saved in the output directory.")
-
-def main(base_dir, intermediate_dir, final_output_dir, keep_intermediates=False):
-    """
-    Main function to process .faa files: rename, merge, and group by gene family.
-    """
-    # Step 1: Rename sequences
-    rename_sequences(base_dir)
-
-    # Step 2: Merge sequences by species
-    merge_sequences(base_dir, intermediate_dir)
-
-    # Step 3: Group sequences by gene family
-    group_by_gene_family(intermediate_dir, final_output_dir)
-
-    # Clean up intermediate files if not needed
-    if not keep_intermediates:
-        for file in os.listdir(intermediate_dir):
-            os.remove(os.path.join(intermediate_dir, file))
-        print("Intermediate files have been removed.")
-
-# Paths and settings
-BASE_DIR = "/path/to/folder"
-INTERMEDIATE_DIR = "/path/to/folder/intermediate"
-FINAL_OUTPUT_DIR = "/path/to/folder/final"
-KEEP_INTERMEDIATES = False  # Change to True if intermediate files should be kept
-
-# Run the pipeline
-main(BASE_DIR, INTERMEDIATE_DIR, FINAL_OUTPUT_DIR, KEEP_INTERMEDIATES)
- ```
-
 
 
 
