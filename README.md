@@ -9,13 +9,13 @@ Basically, all the scripts would work on the output of the OrthoFinder directori
 
 12 chromosome level genome assemblies (10 metazoans and 2 outgroups), and these species are Amphimedon_queenslandica, Mnemiopsis_leydi, Spizellomyces_punctatus, Capitella_teleta, Ciona_intestinalis, Aplysia_californica, Acropora_millepora, Hoilungia_hongkongensis, Priapulus_caudatus, Tribolium_castaneum, Salpingoeca_dolichothecata, and Strongylocentrotus_purpuratus) to perform orthologs inference using BUSCO and OF with default parameters. 
 
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://myoctocat.com/assets/images/base-octocat.svg)
-this screenshot is the picture of tree plus completeness
+![12 chromosome level genome assemblies](/final_combined_plot_reversed_fixed.png)
+this screenshot is the direcct output from both software
 
 BUSCO: Metazoan 954 families
 OrthoFinder: Orthogroup_Sequences 71249 OGs, Single_Copy_Orthologur_Sequences
 
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://myoctocat.com/assets/images/base-octocat.svg)
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](/busco_of_dir_output.png)
 this is the screen shot from slides of original BUSCO and OrthoFinder output
 
 
