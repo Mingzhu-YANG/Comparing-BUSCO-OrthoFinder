@@ -2,21 +2,22 @@
 
 These codes are for constructing core BUSCOs on metazoan phylogeny.
 
-Basically, all the scripts would work on the output of the OrthoFinder directories, by doing MAFFT-Linsi sequences alignment and IQ-TREE2 tree building, we use a customized script to identify the out-paralog OGs and in-paralog sequences(here we only keep one copy to make them single copy, notice we only keep the one that busco have kept), and filtering both for further analysis.
+Basically, all the scripts would work on the output of the OrthoFinder directories, by doing MAFFT-Linsi sequences alignment and IQ-TREE2 tree building, we can get the topologies of different orthogroups, then we use a customized script to identify the out-paralog OGs and in-paralog sequences(here we only keep one copy to make them single copy, notice we only keep the one that busco have kept), and filtering both for further analysis.
 
 
 ## S1-Data collection
 
-12 chromosome level genome assemblies (10 metazoans and 2 outgroups), and these species are Amphimedon_queenslandica, Mnemiopsis_leydi, Spizellomyces_punctatus, Capitella_teleta, Ciona_intestinalis, Aplysia_californica, Acropora_millepora, Hoilungia_hongkongensis, Priapulus_caudatus, Tribolium_castaneum, Salpingoeca_dolichothecata, and Strongylocentrotus_purpuratus) to perform orthologs inference using BUSCO and OF with default parameters. 
+12 chromosome level genome assemblies (10 metazoans and 2 outgroups, and these species are Amphimedon_queenslandica, Mnemiopsis_leydi, Spizellomyces_punctatus, Capitella_teleta, Ciona_intestinalis, Aplysia_californica, Acropora_millepora, Hoilungia_hongkongensis, Priapulus_caudatus, Tribolium_castaneum, Salpingoeca_dolichothecata, and Strongylocentrotus_purpuratus) to perform orthologs inference using BUSCO and OF with default parameters. 
 
 ![12 chromosome level genome assemblies](/final_combined_plot_reversed_fixed2.png)
-this screenshot is the direcct output from both software
+this screenshot is showing the taxa we selected and their completeness
 
 BUSCO: Metazoan 954 families
+
 OrthoFinder: Orthogroup_Sequences 71249 OGs, Single_Copy_Orthologur_Sequences
 
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](/busco_of_dir_output.png)
-this is the screen shot from slides of original BUSCO and OrthoFinder output
+this is the screenshot of original BUSCO and OrthoFinder output
 
 ## S2-Make comparisons
 
@@ -27,12 +28,14 @@ this is the screen shot from slides of original BUSCO and OrthoFinder output
 - folder OF_1_3: 57459 OGs
   these are OGs with less than 3 sequences, cannot be used to build trees, so we have to take them out to another folder.
 - folder OF_ALL: 13790 OGs
+    - we further select the OGs with 4-12 sequences without duplication, there are 1659 OGs
+    - so the rest 12131 OGs with duplications
   
 
 2. MAFFT alignment
-   
+       
 3. IQtree tree building
-   196 OGs are failed, so copy all the successful .fa and .treefile to a new folder called 2_all_OG_multi_13594
+       - 196 OGs are failed from MAFFT or IQtree, so copy all the successful .fa and .treefile to a new folder called 2_all_OG_multi_13594
    
   
 ### S2.2-topology analysis (identify paralogs, i.e. in-paralogs and out-paralogs)
