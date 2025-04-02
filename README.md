@@ -35,7 +35,8 @@ this is the screenshot of original BUSCO and OrthoFinder output
 2. MAFFT alignment
        
 3. IQtree tree building
-       - 196 OGs are failed from MAFFT or IQtree, so copy all the successful .fa and .treefile to a new folder called 2_all_OG_multi_13594
+   
+    - 196 OGs are failed from MAFFT or IQtree, so copy all the successful .fa and .treefile to a new folder called 2_all_OG_multi_13594 (or 11935)
    
   
 ### S2.2-topology analysis (identify paralogs, i.e. in-paralogs and out-paralogs)
@@ -118,7 +119,6 @@ Input file: /user/work/qw23953/6_Compare_Software/8_Redo/OG0000002.fa.mafft.tree
 Tree successfully loaded
 In-Paralogs written to OG0000002.fa.mafft_inparalogs.txt
 Out-Paralogs written to OG0000002.fa.mafft_outparalogs.txt
-
 ```
 2. Prepare the file of outparalog_family.txt
    
@@ -188,7 +188,6 @@ echo "File moving process complete. Check $log_file for details."
 ('HHON_TR10068_c4_g1_i2_m_20869', 'HHON_TR10068_c5_g1_i1_m_20870', 'HHON_TR13161_c0_g1_i1_m_25695', 'HHON_TR10068_c5_g4_i1_m_20871', 'HHON_TR23729_c0_g1_i1_m_46536', 'HHON_TR10104_c0_g1_i1_m_21165', 'HHON_TR29135_c0_g1_i1_m_62144', 'HHON_TR12340_c1_g3_i1_m_24216', 'HHON_TR21485_c0_g1_i1_m_41512', 'HHON_TR21989_c0_g2_i2_m_42557', 'HHON_TR21989_c0_g2_i7_m_42562', 'HHON_TR2444_c0_g1_i1_m_3331', 'HHON_TR27898_c0_g1_i1_m_57272', 'HHON_TR14089_c1_g3_i2_m_26533', 'HHON_TR27939_c0_g1_i1_m_57536', 'HHON_TR14192_c0_g1_i1_m_27579', 'HHON_TR18230_c0_g1_i1_m_34572', 'HHON_TR21697_c1_g1_i1_m_41800', 'HHON_TR22001_c0_g1_i1_m_42667', 'HHON_TR21998_c0_g1_i1_m_42628', 'HHON_TR21998_c0_g1_i3_m_42630', 'HHON_TR28284_c0_g1_i1_m_59111', 'HHON_TR22645_c0_g1_i1_m_44641', 'HHON_TR28543_c0_g1_i1_m_60560', 'HHON_TR23985_c1_g2_i1_m_48344', 'HHON_TR14725_c0_g1_i1_m_28375', 'HHON_TR19725_c3_g2_i4_m_38402', 'HHON_TR8663_c0_g1_i1_m_18754', 'HHON_TR8663_c0_g1_i6_m_18759', 'HHON_TR25822_c0_g1_i1_m_51917', 'HHON_TR31268_c0_g4_i1_m_67721', 'HHON_TR31268_c0_g2_i4_m_67722', 'HHON_TR31268_c0_g3_i1_m_67717', 'HHON_TR31268_c0_g3_i3_m_67723', 'HHON_TR12809_c0_g1_i1_m_24614', 'HHON_TR19725_c2_g1_i1_m_38388', 'HHON_TR2675_c3_g1_i1_m_3654', 'HHON_TR18539_c0_g1_i2_m_35016', 'HHON_TR27215_c0_g1_i1_m_55679', 'HHON_TR25813_c1_g1_i1_m_51909', 'HHON_TR22811_c0_g1_i1_m_44886', 'HHON_TR9809_c1_g1_i1_m_20752', 'HHON_TR11087_c0_g2_i1_m_22833', 'HHON_TR27469_c7_g1_i1_m_56236', 'HHON_TR21989_c0_g1_i1_m_42552', 'HHON_TR31371_c0_g1_i2_m_68054', 'HHON_TR23320_c3_g1_i1_m_46044', 'HHON_TR28664_c0_g1_i1_m_61129', 'HHON_TR8380_c2_g1_i1_m_18218', 'HHON_TR31515_c0_g1_i1_m_68352', 'HHON_TR13033_c7_g1_i1_m_25289', 'HHON_TR14167_c0_g4_i1_m_27277', 'HHON_TR20824_c1_g1_i1_m_40092', 'HHON_TR13033_c4_g2_i1_m_25282', 'HHON_TR22602_c0_g1_i1_m_44377', 'HHON_TR22849_c3_g1_i1_m_45102', 'HHON_TR22849_c3_g1_i3_m_45104', 'HHON_TR30411_c0_g5_i1_m_65655', 'HHON_TR10068_c6_g1_i1_m_20874', 'HHON_TR10641_c0_g1_i1_m_22757', 'HHON_TR3719_c0_g1_i1_m_9666', 'HHON_TR3719_c4_g4_i1_m_9675', 'HHON_TR238_c3_g1_i1_m_108', 'HHON_TR238_c3_g1_i2_m_109', 'HHON_TR28664_c1_g1_i1_m_61130', 'HHON_TR3719_c4_g4_i1_m_9676', 'HHON_TR8380_c1_g1_i1_m_18217', 'HHON_TR238_c2_g1_i1_m_104', 'HHON_TR238_c2_g2_i1_m_106', 'HHON_TR8349_c0_g1_i1_m_18212', 'HHON_TR3719_c1_g1_i1_m_9667', 'HHON_TR3719_c4_g3_i1_m_9674', 'HHON_TR3719_c2_g1_i1_m_9669', 'HHON_TR3719_c4_g4_i3_m_9678', 'HHON_TR3719_c4_g1_i1_m_9671', 'HHON_TR3719_c4_g5_i1_m_9679', 'HHON_TR5894_c0_g1_i1_m_13961', 'HHON_TR238_c2_g3_i1_m_107', 'HHON_TR3719_c4_g2_i1_m_9672', 'HHON_TR13033_c4_g1_i1_m_25280', 'HHON_TR16668_c6_g1_i1_m_32794', 'HHON_TR9110_c0_g1_i1_m_19785', 'HHON_TR11500_c3_g4_i1_m_23128', 'HHON_TR27247_c0_g1_i3_m_55824', 'HHON_TR18711_c0_g1_i1_m_35207', 'HHON_TR26039_c0_g1_i1_m_52563', 'HHON_TR16668_c8_g1_i1_m_32795', 'HHON_TR9681_c0_g2_i1_m_20738', 'HHON_TR6599_c0_g1_i1_m_15424', 'HHON_TR14808_c0_g1_i1_m_28384', 'HHON_TR26989_c6_g6_i1_m_55408', 'HHON_TR26039_c5_g1_i1_m_52564', 'HHON_TR7295_c7_g2_i4_m_15668', 'HHON_TR17551_c10_g1_i1_m_33348', 'HHON_TR26989_c6_g9_i1_m_55413', 'HHON_TR721_c2_g1_i1_m_697', 'HHON_TR26989_c6_g3_i1_m_55403', 'HHON_TR5229_c5_g1_i1_m_13069', 'HHON_TR7295_c4_g3_i1_m_15656', 'HHON_TR8816_c0_g1_i1_m_19014', 'HHON_TR16067_c0_g1_i1_m_31191', 'HHON_TR5229_c4_g1_i1_m_13065', 'HHON_TR7295_c7_g2_i1_m_15662', 'HHON_TR7295_c7_g2_i3_m_15665', 'HHON_TR23320_c4_g6_i1_m_46059', 'HHON_TR23320_c4_g6_i2_m_46060', 'HHON_TR16712_c0_g1_i1_m_32963', 'HHON_TR23320_c0_g1_i1_m_46042', 'HHON_TR23320_c4_g7_i1_m_46063', 'HHON_TR26989_c4_g1_i1_m_55399', 'HHON_TR17282_c0_g2_i3_m_33080', 'HHON_TR27240_c0_g6_i1_m_55792', 'HHON_TR28918_c0_g1_i1_m_61166', 'HHON_TR7605_c0_g1_i1_m_16303', 'HHON_TR20692_c0_g1_i1_m_40074', 'HHON_TR29855_c0_g1_i1_m_63714', 'HHON_TR28820_c0_g1_i1_m_61150', 'HHON_TR13462_c0_g1_i1_m_25790', 'HHON_TR5665_c0_g1_i1_m_13195', 'HHON_TR146_c2_g1_i1_m_18', 'HHON_TR7008_c0_g1_i1_m_15490', 'HHON_TR20371_c3_g2_i6_m_39379', 'HHON_TR25942_c0_g1_i1_m_51976', 'HHON_TR19182_c0_g1_i1_m_36186', 'HHON_TR12859_c0_g1_i1_m_24637', 'HHON_TR20925_c2_g1_i1_m_40156', 'HHON_TR30119_c1_g1_i1_m_64190', 'HHON_TR7295_c0_g1_i1_m_15653', 'HHON_TR14648_c0_g1_i1_m_28367', 'HHON_TR21746_c2_g1_i10_m_42251', 'HHON_TR21746_c2_g1_i16_m_42253', 'HHON_TR16720_c0_g1_i1_m_32966', 'HHON_TR5229_c2_g1_i3_m_13061', 'HHON_TR28185_c0_g1_i1_m_58228', 'HHON_TR25911_c0_g2_i1_m_51964', 'HHON_TR2643_c0_g1_i1_m_3633', 'HHON_TR2643_c0_g2_i1_m_3634', 'HHON_TR17097_c0_g1_i1_m_33024', 'HHON_TR27680_c0_g2_i1_m_56404', 'HHON_TR2737_c1_g1_i1_m_3797', 'HHON_TR14274_c0_g1_i1_m_28121', 'HHON_TR5229_c5_g5_i2_m_13070', 'HHON_TR7295_c4_g1_i1_m_15654', 'HHON_TR10068_c5_g6_i1_m_20873', 'HHON_TR22316_c3_g11_i1_m_43443', 'HHON_TR20438_c0_g2_i3_m_39897', 'HHON_TR27240_c0_g2_i1_m_55790', 'HHON_TR27240_c0_g3_i2_m_55791', 'HHON_TR22316_c3_g2_i2_m_43441', 'HHON_TR29456_c0_g1_i1_m_63671', 'HHON_TR146_c1_g1_i1_m_17'): In-Paralogs
 ('MLEY_Mnemiopsis_leydi_ML000128a', 'MLEY_Mnemiopsis_leydi_ML003255a', 'MLEY_Mnemiopsis_leydi_ML01806a', 'MLEY_Mnemiopsis_leydi_ML031711a', 'MLEY_Mnemiopsis_leydi_ML049310a', 'MLEY_Mnemiopsis_leydi_ML07027a', 'MLEY_Mnemiopsis_leydi_ML150410a', 'MLEY_Mnemiopsis_leydi_ML078914a', 'MLEY_Mnemiopsis_leydi_ML25741a', 'MLEY_Mnemiopsis_leydi_ML083810a', 'MLEY_Mnemiopsis_leydi_ML21544a', 'MLEY_Mnemiopsis_leydi_ML061520a', 'MLEY_Mnemiopsis_leydi_ML06273a', 'MLEY_Mnemiopsis_leydi_ML04078a', 'MLEY_Mnemiopsis_leydi_ML114621a', 'MLEY_Mnemiopsis_leydi_ML149618a', 'MLEY_Mnemiopsis_leydi_ML17732a', 'MLEY_Mnemiopsis_leydi_ML205714a', 'MLEY_Mnemiopsis_leydi_ML115517a', 'MLEY_Mnemiopsis_leydi_ML115518a', 'MLEY_Mnemiopsis_leydi_ML084410a', 'MLEY_Mnemiopsis_leydi_ML01193a', 'MLEY_Mnemiopsis_leydi_ML06717a', 'MLEY_Mnemiopsis_leydi_ML214311a', 'MLEY_Mnemiopsis_leydi_ML451314a', 'MLEY_Mnemiopsis_leydi_ML221322a', 'MLEY_Mnemiopsis_leydi_ML00679a', 'MLEY_Mnemiopsis_leydi_ML06551a', 'MLEY_Mnemiopsis_leydi_ML28568a', 'MLEY_Mnemiopsis_leydi_ML003265a', 'MLEY_Mnemiopsis_leydi_ML148518a', 'MLEY_Mnemiopsis_leydi_ML16134a', 'MLEY_Mnemiopsis_leydi_ML16594a', 'MLEY_Mnemiopsis_leydi_ML198511a', 'MLEY_Mnemiopsis_leydi_ML07241a', 'MLEY_Mnemiopsis_leydi_ML00391a', 'MLEY_Mnemiopsis_leydi_ML218928a', 'MLEY_Mnemiopsis_leydi_ML128424a', 'MLEY_Mnemiopsis_leydi_ML202618a', 'MLEY_Mnemiopsis_leydi_ML004439a', 'MLEY_Mnemiopsis_leydi_ML32344a', 'MLEY_Mnemiopsis_leydi_ML00643a', 'MLEY_Mnemiopsis_leydi_ML016329a', 'MLEY_Mnemiopsis_leydi_ML160312a', 'MLEY_Mnemiopsis_leydi_ML12424a', 'MLEY_Mnemiopsis_leydi_ML20834a', 'MLEY_Mnemiopsis_leydi_ML20835a', 'MLEY_Mnemiopsis_leydi_ML409410a', 'MLEY_Mnemiopsis_leydi_ML14764a', 'MLEY_Mnemiopsis_leydi_ML006934a', 'MLEY_Mnemiopsis_leydi_ML120737b', 'MLEY_Mnemiopsis_leydi_ML029911a', 'MLEY_Mnemiopsis_leydi_ML029912a', 'MLEY_Mnemiopsis_leydi_ML03596a', 'MLEY_Mnemiopsis_leydi_ML083015a', 'MLEY_Mnemiopsis_leydi_ML069711a', 'MLEY_Mnemiopsis_leydi_ML32093a', 'MLEY_Mnemiopsis_leydi_ML00918a', 'MLEY_Mnemiopsis_leydi_ML038833a', 'MLEY_Mnemiopsis_leydi_ML015730a', 'MLEY_Mnemiopsis_leydi_ML050815a', 'MLEY_Mnemiopsis_leydi_ML06576a', 'MLEY_Mnemiopsis_leydi_ML03194a', 'MLEY_Mnemiopsis_leydi_ML36061a', 'MLEY_Mnemiopsis_leydi_ML36936a', 'MLEY_Mnemiopsis_leydi_ML03238a', 'MLEY_Mnemiopsis_leydi_ML141723a', 'MLEY_Mnemiopsis_leydi_ML141721a', 'MLEY_Mnemiopsis_leydi_ML226712a', 'MLEY_Mnemiopsis_leydi_ML102912a', 'MLEY_Mnemiopsis_leydi_ML160325a', 'MLEY_Mnemiopsis_leydi_ML148521a', 'MLEY_Mnemiopsis_leydi_ML042010a', 'MLEY_Mnemiopsis_leydi_ML07013a', 'MLEY_Mnemiopsis_leydi_ML05048a', 'MLEY_Mnemiopsis_leydi_ML07028a', 'MLEY_Mnemiopsis_leydi_ML078921a', 'MLEY_Mnemiopsis_leydi_ML20562a', 'MLEY_Mnemiopsis_leydi_ML01809a', 'MLEY_Mnemiopsis_leydi_ML045236a', 'MLEY_Mnemiopsis_leydi_ML039813a', 'MLEY_Mnemiopsis_leydi_ML07899a', 'MLEY_Mnemiopsis_leydi_ML078910a', 'MLEY_Mnemiopsis_leydi_ML15156a', 'MLEY_Mnemiopsis_leydi_ML17014a', 'MLEY_Mnemiopsis_leydi_ML040511a', 'MLEY_Mnemiopsis_leydi_ML218813a', 'MLEY_Mnemiopsis_leydi_ML07102a', 'MLEY_Mnemiopsis_leydi_ML40984a', 'MLEY_Mnemiopsis_leydi_ML07454a', 'MLEY_Mnemiopsis_leydi_ML45532a', 'MLEY_Mnemiopsis_leydi_ML005348a', 'MLEY_Mnemiopsis_leydi_ML065756a', 'MLEY_Mnemiopsis_leydi_ML065757a', 'MLEY_Mnemiopsis_leydi_ML01013a', 'MLEY_Mnemiopsis_leydi_ML311615a', 'MLEY_Mnemiopsis_leydi_ML07841a', 'MLEY_Mnemiopsis_leydi_ML064932a', 'MLEY_Mnemiopsis_leydi_ML351725a', 'MLEY_Mnemiopsis_leydi_ML097511a', 'MLEY_Mnemiopsis_leydi_ML030232a', 'MLEY_Mnemiopsis_leydi_ML34349a', 'MLEY_Mnemiopsis_leydi_ML059820a', 'MLEY_Mnemiopsis_leydi_ML09537a', 'MLEY_Mnemiopsis_leydi_ML16588a', 'MLEY_Mnemiopsis_leydi_ML16032a', 'MLEY_Mnemiopsis_leydi_ML16705a', 'MLEY_Mnemiopsis_leydi_ML07086a', 'MLEY_Mnemiopsis_leydi_ML259912a', 'MLEY_Mnemiopsis_leydi_ML097516a', 'MLEY_Mnemiopsis_leydi_ML138314a', 'MLEY_Mnemiopsis_leydi_ML00639a', 'MLEY_Mnemiopsis_leydi_ML08213a', 'MLEY_Mnemiopsis_leydi_ML11979a', 'MLEY_Mnemiopsis_leydi_ML28255a', 'MLEY_Mnemiopsis_leydi_ML00735a', 'MLEY_Mnemiopsis_leydi_ML010530a', 'MLEY_Mnemiopsis_leydi_ML019110a', 'MLEY_Mnemiopsis_leydi_ML06302a', 'MLEY_Mnemiopsis_leydi_ML040718a', 'MLEY_Mnemiopsis_leydi_ML06301a', 'MLEY_Mnemiopsis_leydi_ML065313a', 'MLEY_Mnemiopsis_leydi_ML22306a', 'MLEY_Mnemiopsis_leydi_ML077638a', 'MLEY_Mnemiopsis_leydi_ML12862a', 'MLEY_Mnemiopsis_leydi_ML279842a', 'MLEY_Mnemiopsis_leydi_ML21401a', 'MLEY_Mnemiopsis_leydi_ML368910a', 'MLEY_Mnemiopsis_leydi_ML190411a', 'MLEY_Mnemiopsis_leydi_ML16595a', 'MLEY_Mnemiopsis_leydi_ML065713a', 'MLEY_Mnemiopsis_leydi_ML095510a', 'MLEY_Mnemiopsis_leydi_ML327420a', 'MLEY_Mnemiopsis_leydi_ML02332a'): In-Paralogs
 ('STRO_XP_011676996.2', 'STRO_XP_780641.3'): In-Paralogs
-
 ```
 - 1. First we count the in-paralogs by using count_inparalogs.py
 ```
@@ -226,8 +225,7 @@ with open("inparalogs_4_n_index.txt", "w") as output_file:
         output_file.write(f"{seq}\n")
 
 # Pring number of sequences
-print(f"总序列名称数: {len(sequences)}")
-
+print(f"Total number of sequences: {len(sequences)}")
 ```
  Then the output should be a file called  inparalogs_4_n_index.txt and it looks like:
 ```
@@ -238,8 +236,6 @@ HHON_TR25907_c2_g1_i1_m_51961
 HHON_TR14192_c0_g2_i1_m_27580
 HHON_TR28827_c0_g1_i1_m_61152
 HHON_TR23333_c1_g1_i1_m_46165
-
-
 ```
 - 2. Extract all the sequences above using extract_inparalogs_seq.py
 ```
@@ -283,10 +279,10 @@ if sequences_not_found:
 
 # Print the total number of extracted sequences
 print(f"Total number of extracted sequences: {len(sequences_found)}")
-
 ```
 
-  Then we got an output of inparalogs_4_n.fasta, next step nwe need to map them with BUSCO sequences and keep them single copy, here we use find_inparalogs_busco.py
+  Then we got an output of inparalogs_4_n.fasta, next step nwe need to map them with BUSCO sequences and keep them single copy, here we use 
+  find_inparalogs_busco.py
   
 ```
 from Bio import SeqIO
@@ -340,7 +336,6 @@ print(f"In {total_queries} sequences, found {found_count} matchings ")
 print(f"Matching results were save to {output_file} ")
 print(f"Unmatching sequences were saved to{to_delete_file} ")
 print(f"Number of unmatching sequences {not_found_count} ")
-
 ```
 Then we got out oput of hits_match.txt and inparalogs_to_delete.txt
 
@@ -380,13 +375,11 @@ for fa_file in os.listdir(target_dir):
 
 # Output
 print(f"Number of deleted sequences is: {deleted_sequences_count}")
-
 ```
-   - 4. Then, a lot of OrthoGroups become null file as they have no sequences remained, we move them to null_file folder using a script move_nullfile.sh
+   - 4. Then, a lot of OrthoGroups become null file as they have no sequences remained, we move them to null_file folder using a script move_null_file.sh
    
 ```
 #!/bin/bash
-
 
 source_folder="/user/work/qw23953/6_Compare_Software/8_Redo/4_all_OG_no_inparalogs"
 target_folder="${source_folder}/null_file"
@@ -472,7 +465,6 @@ with open(output_file_path, 'w') as output_file:
                                 output_file.write(f"{busco_filename}\t{busco_id}\t{orthofinder_filename}\t{orthofinder_id}\t{len(orthofinder_seq)}\n")
 
 print("Comparison results have been written to", output_file_path)
-
 ```
 
 
