@@ -25,12 +25,61 @@ this is the screenshot of original BUSCO and OrthoFinder output
 
 1. Using the bash script to group all OGs into different categories, for the Orthogroup_Sequences dir, we have 71249 OGs, we then group them into 2:
    
-- folder OF_1_3: 57459 OGs
-  these are OGs with less than 3 sequences, cannot be used to build trees, so we have to take them out to another folder.
-- folder OF_ALL: 13790 OGs
+- folder OF_1_3: 57459 OGs, using script **get_groups_1_3_seqs.sh**
+  these are OGs with less than 3 sequences, cannot be used to build trees, so we have to take them out to folder OF_1_3_seqs.
+- folder OF_4_N: 13790 OGs, we separate them using script **find_single_copy.sh**
     - we further select the OGs with 4-12 sequences without duplication, there are 1659 OGs
     - so the rest 12131 OGs with duplications
-  
+
+**get_groups_1_3_seqs.sh**
+```
+#!/bin/bash
+
+# Define directory
+SOURCE_DIR="/home/qw23953/mingzhu/4_BUSCO_OrthoFinder_2025/4_Orthogroup_Sequences_63451"   
+TARGET_DIR="$SOURCE_DIR/OF_1_3_seqs"
+
+# Create target dir (if not exist)
+mkdir -p "$TARGET_DIR"
+
+# Loop through all the fa file
+for file in "$SOURCE_DIR"/*.fa; do
+    # Caculate the number of seqs in each file
+    count=$(grep -c "^>" "$file")
+
+    # Check number of seqs, whether they are in between the defined number
+    if [ "$count" -ge 1 ] && [ "$count" -le 3 ]; then
+        # Move file to target folder
+        mv "$file" "$TARGET_DIR/"
+        # echo "移动文件: $file"
+    fi
+done
+
+echo "Done！"
+```
+**find_single_copy.sh**
+```
+#!/bin/bash
+
+input_directory="/home/qw23953/mingzhu/4_BUSCO_OrthoFinder_2025/4_Orthogroup_Sequences_63451/OF_4_N"
+
+output_directory="/home/qw23953/mingzhu/4_BUSCO_OrthoFinder_2025/4_Orthogroup_Sequences_63451/OF_4_N/OF_4_12_single"
+
+mkdir -p "$output_directory"
+
+# Loop through all the fasta file
+for fasta_file in "$input_directory"/*.fa; do
+    # Get the file name
+    filename=$(basename "$fasta_file")
+    # Check if there are duplicated species ID
+    duplicate=$(grep -o '^>[A-Za-z]\{4\}' "$fasta_file" | sort | uniq -d)
+    # If no duplicated ID, then move file to target folder
+    if [ -z "$duplicate" ]; then
+        mv "$fasta_file" "$output_directory/$filename"
+        echo "Moved $filename to $output_directory"
+    fi
+done
+```
 
 2. MAFFT alignment
        
