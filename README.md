@@ -179,6 +179,7 @@ later on you would use this dataset to run comparisons.
    - folder OF_4_N: 13790 OGs, we separate them using script **find_single_copy.sh**
        - we further select the OGs with 4-12 sequences without duplication, there are 1659 OGs
        - so the rest 12131 OGs with duplications
+       - we can also use **get_strict_single_copy.sh** to get single-copy orthogroups with all taxa present
 
 **get_groups_1_3_seqs.sh**
 ```
@@ -229,6 +230,34 @@ for fasta_file in "$input_directory"/*.fa; do
     fi
 done
 ```
+**get_strict_single_copy.sh**
+
+```
+#!/bin/bash
+
+# Define directory
+SOURCE_DIR="/home/qw23953/mingzhu/4_BUSCO_OrthoFinder_2025/4_Orthogroup_Sequences_63451/OF_4_N/OF_4_12_single"   
+TARGET_DIR="$SOURCE_DIR/OF_12_seqs"
+
+# Create target dir (if not exist)
+mkdir -p "$TARGET_DIR"
+
+# Loop through all the fa file
+for file in "$SOURCE_DIR"/*.fa; do
+    # Caculate the number of seqs in each file
+    count=$(grep -c "^>" "$file")
+
+    # Check number of seqs, whether they are in between the defined number
+    if [ "$count" -ge 12 ]; then
+        # Move file to target folder
+        mv "$file" "$TARGET_DIR/"
+        echo "Moved file: $file"
+    fi
+done
+```
+
+
+
 
 2. MAFFT alignment
 
@@ -271,7 +300,7 @@ nohup bash -c '
 ' > parallel.log 2>&1 &
 ```
 
-
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
  
 ### S2.2-topology analysis (identify paralogs, i.e. in-paralogs and out-paralogs)
