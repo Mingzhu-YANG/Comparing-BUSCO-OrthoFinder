@@ -368,6 +368,12 @@ with open(outparalogs_file, "w") as f:
 
 print(f"In-Paralogs written to {inparalogs_file}")
 print(f"Out-Paralogs written to {outparalogs_file}")
+
+# Check if files are empty and delete if so
+for file in [inparalogs_file, outparalogs_file]:
+    if os.path.getsize(file) == 0:
+        os.remove(file)
+        print(f"Deleted empty file: {file}")
 ```
  the output should like below:  
 ```
