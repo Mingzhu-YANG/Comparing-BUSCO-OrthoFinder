@@ -394,15 +394,11 @@ Out-Paralogs written to OG0000002.fa.mafft_outparalogs.txt
    
    It should looks like
 ```
-OG0000000.fa
-OG0000002.fa
-OG0000003.fa
-OG0000004.fa
-OG0000005.fa
-OG0000006.fa
-OG0000007.fa
-OG0000008.fa
-OG0000011.fa
+OG0000000_tree_outparalogs.txt
+OG0000001_tree_outparalogs.txt
+OG0000002_tree_outparalogs.txt
+OG0000003_tree_outparalogs.txt
+OG0000004_tree_outparalogs.txt
 ...
 ```
 3. Copy all the file into a new folder called 3_all_OG_no_outparalogs/
