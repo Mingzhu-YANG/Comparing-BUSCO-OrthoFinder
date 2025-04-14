@@ -411,38 +411,39 @@ OG0000011.fa
    
    using the script of move_outparalog_file.sh
 ```
-#!/bin/bash
+import os
+import shutil
 
-# File path
-folder="3_all_OG_no_outparalogs/"
-move_list="outparalog_family.txt"
-log_file="move_files.log"
-target_folder="${folder}outparalogs_file/"
+# Base directory containing all the files
+base_dir = "/home/qw23953/mingzhu/4_BUSCO_OrthoFinder_2025/4_Orthogroup_Sequences_63451/copy_OF_4_N_list/of_4_n_8139"
+# Target directory to move the matched files into
+output_dir = os.path.join(base_dir, "outparalog_family")
+# Text file that contains the list of *_outparalogs.txt filenames
+list_file = os.path.join(base_dir, "outparalog_family.txt")
 
-# Clear log file（IF already exist）
-> "$log_file"
+# Create the output directory if it doesn't already exist
+os.makedirs(output_dir, exist_ok=True)
 
-# Create target folder
-mkdir -p "$target_folder"
-
-# Read the file list to be moved
-while IFS= read -r filename
-do
-    # Build complete path
-    filepath="${folder}${filename}"
-    
-    # If file exist then move and write logs
-    if [ -f "$filepath" ]; then
-        echo "Moving $filepath to $target_folder" | tee -a "$log_file"
-        mv "$filepath" "$target_folder"
-    else
-        echo "File $filepath does not exist" | tee -a "$log_file"
-    fi
-done < "$move_list"
-
-echo "File moving process complete. Check $log_file for details."
+# Read the list file line by line
+with open(list_file, "r") as f:
+    for line in f:
+        line = line.strip()
+        if line.endswith("_outparalogs.txt"):
+            # Remove the "_outparalogs.txt" suffix to get the prefix
+            prefix = line.replace("_outparalogs.txt", "")
+            # Construct the corresponding tree file name
+            tree_file = f"{prefix}.txt"
+            src_path = os.path.join(base_dir, tree_file)
+            dst_path = os.path.join(output_dir, tree_file)
+            
+            # Move the file if it exists
+            if os.path.exists(src_path):
+                shutil.move(src_path, dst_path)
+                print(f"✅ Moved: {tree_file}")
+            else:
+                print(f"❌ File not found: {tree_file}")        
 ```
-
+and move all the *_outparalogs.txt file and *inparalogs.txt file by edit tree_file = f"{prefix}.txt" line of codes, the suffix part.
 
 4. Further filtering the in-paralog sequences
    
