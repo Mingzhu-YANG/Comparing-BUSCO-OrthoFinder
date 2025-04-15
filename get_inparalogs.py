@@ -160,7 +160,7 @@ for fa in fa_files:
     with open(os.path.join(final_dir, fa)) as f:
         seq_count += sum(1 for line in f if line.startswith(">"))
 
-print(f"✅ Final .fa files moved to: {final_dir}")
+print(f"✅ Final cleaned OGs moved to: {final_dir}")
 print(f"📦 Intermediate files moved to: {intermediate_dir}")
 print(f"📊 Final summary:")
 print(f"   - Number of final clean OGs: {file_count}")
