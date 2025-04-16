@@ -44,44 +44,33 @@ this is the screenshot of original BUSCO and OrthoFinder output
 **get_groups_1_3_seqs.sh**
 
 
-2. MAFFT alignment
+2. Copy treefiles using copy_treefiles.sh
 
 ```
-nohup bash -c 'for i in *.fa; do mafft --localpair --maxiterate 1000 --preservecase "$i" > "$i.mafft"; done' > mafft.log 2>&1 &
-```
-       
-3. IQtree tree building
-   
-    - 196 OGs are failed from MAFFT or IQtree, so copy all the successful .fa and .treefile to a new folder called 2_all_OG_multi_13594 (or 11935)
+#!/bin/bash
 
-```
-for i in *.mafft
-do
-iqtree2 -s $i -m MFP -mset LG+F+G -madd LG+F+G+C60,LG+F+G+C50,LG+C40+F+G,LG+C30+F+G,LG+C20+F+G,LG+C10+F+G,C10,C20,C30,C40,C50,C60 --score-diff all -mwopt  -bb 1000
+# Set the directories
+src_dir=/home/qw23953/mingzhu/compare_BUSCO_OrthoFinder/5_BUSCO_OrthoFinder_2024/2_OrthoFinder/Results_Mar11/Gene_Trees
+dst_dir=/home/qw23953/mingzhu/compare_BUSCO_OrthoFinder/5_BUSCO_OrthoFinder_2024/2_OrthoFinder/Orthogroup_Sequences/OF_4_N
 
+# Loop through the txt files in the destination directory
+for file in "$dst_dir"/*.txt; do
+  # Create a new directory for each file
+  mkdir -p "${file%.txt}"
+
+  # Loop through the contents of the file
+  while IFS= read -r line; do
+    # Extract the OGxxx part
+    og_name="${line%.fa}"
+
+    # Copy the corresponding tree file
+    cp "$src_dir/$og_name"_tree.txt "${file%.txt}/"
+  done < "$file"
 done
+
 ```
- Or if there are too many files or too big files, you need to configure the parallel tasks to avoid disrupt the system
-```
-find . -maxdepth 1 -iname "*mafft" > job_array.txt
-```
-```
-nohup bash -c '
-    nt=4
-    max_parallel_jobs=25
-    cat job_array.txt | parallel -j $max_parallel_jobs --no-notice "
-        echo \"Running {}\"
-        iqtree2 -s {} \
-            -m MFP \
-            -mset LG+F+G \
-            -madd LG+F+G+C60,LG+F+G+C50,LG+C40+F+G,LG+C30+F+G,LG+C20+F+G,LG+C10+F+G,C10,C20,C30,C40,C50,C60 \
-            --score-diff all \
-            -mwopt \
-            -nt ${nt} \
-            -bb 1000 > {}.log 2>&1
-    "
-' > parallel.log 2>&1 &
-```
+
+
  
 ### S2.2-topology analysis (identify paralogs, i.e. in-paralogs and out-paralogs)
 1. identify_paralogs_2.py
