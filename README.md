@@ -84,8 +84,10 @@ done
    + For now, we get the most relaxed level of single-copy Orthologues Groups.
    + Before we filtering, we also have OF_4_12 using BUSCO definition of single copy orthologs, the number of OF_4_12 is 1659 OGs,
    + We also have OrthoFinder definition of 365 Single_Copy_Orthologue_Sequences.
+   
+![BUSCO filtering criteria and overlap](/busco_pie_chart.png)
 
-  ### S2.3-Using these diferent level of restrictions we make conparison with BUSCO output, here the BUSCO output was reformatted according to gene families.**
+  ### S2.3-Using these different level of restrictions we make comparison with BUSCO output, here the BUSCO output was reformatted according to gene families.**
    
 
   main comparison script 
