@@ -72,7 +72,7 @@ done
 
 
  
-### S2.2-topology analysis (identify paralogs, i.e. in-paralogs and out-paralogs)
+### S2.2-Topology analysis (identify paralogs, i.e. in-paralogs and out-paralogs)
 1. identify_paralogs_2.py
 
 
